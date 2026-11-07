@@ -18,6 +18,74 @@ nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:20;disp
 .timeline{max-width:760px;margin:0 auto;line-height:1.9}.timeline h3{font:italic 23px 'Cormorant Garamond',serif;font-weight:600;margin:20px 0 4px}.timeline p{margin:8px 0 23px}
 .rsvp-card{background:#fffaf6;color:#49352e;border-radius:12px;padding:28px 24px;max-width:650px;margin:0 auto;text-align:left;box-shadow:0 10px 30px #713a2440}.rsvp-card label{display:block;text-align:center;font-size:13px;margin:14px 0 5px}.rsvp-card input,.rsvp-card textarea,.rsvp-card select{width:100%;border:1px solid #ddd5cf;border-radius:5px;padding:12px;font:14px Georgia;background:white;color:#38271f}.rsvp-card textarea{min-height:90px;resize:vertical}.radio{display:flex;justify-content:center;gap:16px;margin:12px}.radio label{margin:0}.event-choice{border:1px solid #a64c30;border-radius:5px;padding:12px;margin:10px 0;display:flex;gap:10px;align-items:flex-start}.event-choice label{text-align:left;margin:0}.submit{width:100%;border:0;background:#862d13;color:white;padding:14px;border-radius:5px;font:14px Georgia;cursor:pointer;margin-top:14px}.submit:hover{background:#5d2414}footer{padding:30px 15px;text-align:center;font-size:12px;color:#f9e4ce}footer a{color:inherit}
 @media(max-width:650px){nav{right:8px;top:auto;bottom:12px;transform:none;grid-template-columns:repeat(4,auto);gap:4px}nav a{font-size:9px;padding:9px 8px;min-width:0}.hero{min-height:560px}.hero-title{left:7%;top:22%;font-size:34px;padding:13px 20px}.hero-art{object-fit:cover}.invitation-card{padding:27px 18px}.names{font-size:40px}section{padding-left:16px;padding-right:16px}.host-copy{font-size:14px}.date-grid{font-size:12px}.lace{height:38px}}
+
+/* Responsive layout and motion enhancements */
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{overflow-x:hidden}
+.hero{isolation:isolate}
+.hero-art{transform-origin:center;animation:artDrift 24s ease-in-out infinite alternate}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 35%,#57251644 100%);animation:glowPulse 7s ease-in-out infinite alternate}
+.hero-title{animation:titleArrive 1.25s cubic-bezier(.2,.8,.2,1) both;transform-origin:center}
+.hero-hint{animation:hintFloat 2.2s ease-in-out infinite}
+.lace{position:relative}
+.lace:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 15%,#fff9 48%,transparent 75%);transform:translateX(-120%);animation:laceShine 7s ease-in-out infinite}
+.invitation-card{animation:cardFloat 6s ease-in-out infinite}
+.pill,.submit,nav a{transition:transform .25s ease,background-color .25s ease,box-shadow .25s ease}
+.pill:hover,.submit:hover{transform:translateY(-3px);box-shadow:0 10px 22px #59321e55}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+nav a[aria-current="location"]{background:#542313;box-shadow:0 0 0 2px #f1d5a4}
+@keyframes artDrift{from{transform:scale(1)}to{transform:scale(1.055) translateY(-8px)}}
+@keyframes glowPulse{from{opacity:.45}to{opacity:.9}}
+@keyframes titleArrive{from{opacity:0;translate:0 24px;rotate:-9deg}to{opacity:1;translate:0 0;rotate:-5deg}}
+@keyframes hintFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes laceShine{0%,65%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+@keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media(max-width:760px){
+ section{padding:48px 18px;min-height:0}
+ .hero{height:88svh;min-height:520px;padding:0}
+ .hero-art{object-fit:cover}
+ .hero-title{top:25%;left:50%;transform:translateX(-50%) rotate(-4deg);width:max-content;max-width:84vw;padding:14px 22px;font-size:clamp(30px,8vw,42px);text-align:center}
+ .hero-hint{bottom:24px;padding:0 20px;font-size:9px;letter-spacing:.17em}
+ nav{right:50%;left:auto;top:auto;bottom:10px;transform:translateX(50%);display:flex;justify-content:center;gap:5px;width:max-content;max-width:calc(100vw - 16px);padding:6px;background:#6f2b19dd;border:1px solid #e3bd87;border-radius:14px;backdrop-filter:blur(8px)}
+ nav a{min-width:0;padding:9px 11px;font-size:9px;border-radius:7px}
+ body{padding-bottom:62px}
+ .invitation-card{width:min(100%,650px);padding:28px clamp(16px,5vw,34px);border-width:4px;border-radius:18px}
+ .overline{font-size:9px;letter-spacing:.16em}
+ .invite-line{font-size:clamp(10px,2.8vw,13px);letter-spacing:.1em;line-height:1.7}
+ .names{font-size:clamp(37px,10vw,48px)}
+ .date-line{font-size:14px}
+ .address{font-size:12px;overflow-wrap:anywhere}
+ .host-copy{font-size:clamp(13px,3.6vw,16px);line-height:1.9}
+ .bismillah{font-size:15px;line-height:1.6;margin:34px 0 20px}
+ .date-grid{max-width:100%;margin:26px auto 18px}
+ .date-grid div{padding:8px 4px;font-size:11px}
+ .date-grid b{font-size:25px}
+ .dress{font-size:13px}
+ #countdown{font-size:clamp(16px,4vw,23px)!important;line-height:1.6}
+ .timeline{font-size:13px;line-height:1.8}
+ .timeline h3{font-size:21px}
+ .rsvp-card{width:100%;padding:22px 16px}
+ .rsvp-card input,.rsvp-card textarea,.rsvp-card select{font-size:16px}
+ .radio{gap:25px}
+ .event-choice{gap:8px}
+ .event-choice>input{width:auto;flex:0 0 auto;margin-top:3px}
+ .event-choice label{font-size:12px;line-height:1.6}
+ .lace{height:34px;background-size:auto 34px}
+}
+@media(max-width:380px){
+ nav{gap:2px;padding:5px}
+ nav a{padding:8px 8px;font-size:8px}
+ .hero{min-height:480px}
+ .hero-title{font-size:30px}
+ .invitation-card{padding:24px 13px}
+ .date-grid div{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+ .reveal{opacity:1;transform:none}
+}
+
 </style></head><body>
 <nav aria-label="Invitation navigation"><a href="#home">HOME</a><a href="#celebrations">CELEBRATIONS</a><a href="#engagement">ENGAGEMENT</a><a href="#rsvp">RSVP</a></nav>
 <section class="hero" id="home" aria-label="Invitation cover">
@@ -68,4 +136,25 @@ const target=new Date('2026-11-09T09:00:00+05:30');
 function updateCountdown(){let ms=Math.max(0,target-new Date()),d=Math.floor(ms/86400000),h=Math.floor(ms%86400000/3600000),m=Math.floor(ms%3600000/60000);document.getElementById('countdown').textContent=d+' days · '+h+' hours · '+m+' minutes'}
 updateCountdown();setInterval(updateCountdown,60000);
 document.getElementById('rsvpForm').addEventListener('submit',async e=>{e.preventDefault();const form=e.currentTarget;const data={name:document.getElementById('guest').value,email:document.getElementById('email').value,phone:document.getElementById('phone').value,attending:form.querySelector('input[name="attending"]:checked').value,guests:document.getElementById('guests').value,message:document.getElementById('message').value};const text='RSVP — Abdul Hadi & Zoya Engagement\n'+Object.entries(data).map(([k,v])=>k+': '+v).join('\n');try{await navigator.clipboard.writeText(text);document.getElementById('rsvpStatus').textContent='Your RSVP details have been copied. Please share them with the hosts.'}catch(err){document.getElementById('rsvpStatus').textContent=text}});
+
+/* Scroll reveals, section-aware navigation and resilient countdown */
+(function(){
+ const revealTargets=document.querySelectorAll('.invitation-card,.bismillah,.host-copy,.event-section,.timeline,.rsvp-card,.lace');
+ revealTargets.forEach(el=>el.classList.add('reveal'));
+ if('IntersectionObserver' in window){
+   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+     if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}
+   }),{threshold:.12,rootMargin:'0px 0px -35px 0px'});
+   revealTargets.forEach(el=>observer.observe(el));
+ }else{revealTargets.forEach(el=>el.classList.add('is-visible'))}
+ const links=[...document.querySelectorAll('nav a')];
+ const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+ if('IntersectionObserver' in window){
+   const navObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+     if(entry.isIntersecting){links.forEach(a=>a.removeAttribute('aria-current'));const active=links.find(a=>a.getAttribute('href')==='#'+entry.target.id);if(active)active.setAttribute('aria-current','location')}
+   }),{rootMargin:'-35% 0px -55% 0px'});
+   sections.forEach(section=>navObserver.observe(section));
+ }
+})();
+
 </script></body></html>
